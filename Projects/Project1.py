@@ -20,3 +20,6 @@ s3.set_size(0.1)
 
 s4 = codesters.Sprite("earth", 100, -100)
 s4.set_size(0.2)
+
+message1 = codesters.Text("Van Robbins",0,220,"red")
+message2 = codesters.Text("I like earth",0,-220,"blue")
