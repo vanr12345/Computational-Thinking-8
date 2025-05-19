@@ -27,6 +27,7 @@ window.tracer(0)
 # Section 2: Setup
 # TODO - create your player character
 s1 = create_sprite("spaceship",0,0)
+s2 = create_sprite("lebron",0,0)
 # TODO - set your background
 set_background("space")
 # TODO - set the starting value for your variable
@@ -45,30 +46,52 @@ def move_down():
 def move_right():
 	s1.setheading(0)
 	s1.forward(10)
+def shoot():
+	# create a new sprite that looks like a dot or turtle
+	t1 = turtle.Turtle()
+	t1.penup()
+	t1.goto(s1.xcor(), s1.ycor())
+	t1.forward(48)
+	# start drawing
+	t1.pendown()
+	# change the color to ____
+	t1.color("red")
+	# move forward some distance
+	t1.forward(150)
+	t1.hideturtle()
+	window.update()
+
+	# clear all drawings
+	#t1.penup()
+	time.sleep(0.1)
+	t1.clear()
+
+
 # TODO - pick keys for each control
 window.onkeypress(move_up, "Up")
 window.onkeypress(move_down, "Down")
 window.onkeypress(move_right, "Right")
 window.onkeypress(move_left, "Left")
+window.onkeypress(shoot, "space" )
+# window.onkeypress(,)
 # Section 4: Game Loop
 window.listen()
 timer = 0
 while True:
 	time.sleep(0.1)
 	timer += 1  
-	 
+	
     
- 	# TODO - code for automatic actions
-
-
-
-
-
-
+# TODO - code for automatic actions
 	window.update()
+	if timer % 10 == 0:
+		y_position = random. randint (-250, 250)
+		s2 = create_sprite("meteor", 300,y_position)
+		s2.setheading(180)
+		obstacles.append
 
-	# if :
+	# if 
 	# 	break
 	
 
-print("Game Over")
+	print("Game Over")
