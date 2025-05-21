@@ -27,7 +27,6 @@ window.tracer(0)
 # Section 2: Setup
 # TODO - create your player character
 s1 = create_sprite("spaceship",0,0)
-s2 = create_sprite("lebron",0,0)
 # TODO - set your background
 set_background("space")
 # TODO - set the starting value for your variable
@@ -66,6 +65,9 @@ def shoot():
 	time.sleep(0.1)
 	t1.clear()
 
+	#here is where you destroy the obstacles
+	
+
 
 # TODO - pick keys for each control
 window.onkeypress(move_up, "Up")
@@ -77,6 +79,9 @@ window.onkeypress(shoot, "space" )
 # Section 4: Game Loop
 window.listen()
 timer = 0
+obstacles = []
+lives=1
+score=0
 while True:
 	time.sleep(0.1)
 	timer += 1  
@@ -88,10 +93,30 @@ while True:
 		y_position = random. randint (-250, 250)
 		s2 = create_sprite("meteor", 300,y_position)
 		s2.setheading(180)
-		obstacles.append
+		obstacles.append(s2)
+
+	s1.clear()
+	s1.write(f"score={score}",font= ("Arial", 40, "normal"))
+	
 
 	# if 
 	# 	break
-	
+	for s2 in obstacles:
+		s2.forward(10)
+		if get_distance(s1,s2) < 50:
+			lives -= 1
+			s2.hideturtle()
+			obstacles.remove(s2)
 
-	print("Game Over")
+
+	if lives<=0:
+
+		s1.write("Game Over",font=("arial", 70, "normal"))
+		window.update()
+		time.sleep(.1)
+		break
+		
+
+
+
+print("Game Over")
